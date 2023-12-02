@@ -1,0 +1,41 @@
+.main-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.heading {
+    margin-bottom: 30px;
+    color: #2a2185; /* Cor do tema */
+    text-align: center;
+}
+
+#search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+#search {
+    width: 50%; /* Aumenta o tamanho da barra de pesquisa */
+    padding: 10px; /* Aumenta a altura da barra de pesquisa */
+    font-size: 16px; /* Aumenta o tamanho da fonte */
+    border-radius: 5px; /* Arredonda as bordas da barra de pesquisa */
+    border: 1px solid #ddd; /* Adiciona uma borda sutil */
+}
+#publicacoesTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+#publicacoesTable thead {
+    background-color: #2a2185;
+    color: #fff;
+}
+#publicacoesTable th, #publicacoesTable td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+#publicacoesTable tbody tr:hover {
+    background-color: #f1f1f1;
+}

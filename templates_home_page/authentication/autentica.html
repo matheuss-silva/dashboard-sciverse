@@ -1,0 +1,56 @@
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/authentication.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+    <div class="login-container">
+        {% load static %}
+        <img src="{% static 'Logo_Auth.png' %}" alt="Logo">
+        <form action="{% url 'autentica' %}" method="POST" onsubmit="return validateForm()"> 
+            {% csrf_token %}
+            <input type="text" name="username" id="id_username" placeholder="Nome de usuário" required>
+            <div id="usernameError" class="error-message">
+                {{ form.username.errors.as_text }}
+            </div>
+            
+            <input type="email" name="email" id="id_email" placeholder="E-mail" required>
+            <div id="emailError" class="error-message">
+                {{ form.email.errors.as_text }}
+            </div>
+            
+            <input type="password" name="password1" id="id_password1" placeholder="Senha" required>
+            <div id="passwordError" class="error-message"></div>
+            
+            <input type="password" name="password2" id="id_password2" placeholder="Confirme a senha" required>
+            <div id="passwordConfirmError" class="error-message"></div>
+            
+            <button type="submit">Cadastrar</button>
+        </form>
+        <div class="signup-message">
+            <p>Já tem uma conta? <a href="{% url 'login' %}">Faça login aqui.</a></p>
+        </div>
+    </div>
+
+    <!-- Popup para mensagens de erro -->
+    <div class="popup" id="errorPopup">
+        <div class="popup-content">
+            <p id="popupMessage">Erro</p>
+        </div>
+    </div>  
+</body>
+</html>
+{% endblock content %}
+
+{% block extra_js %}
+<script src="{% static 'js/authentication.js' %}"></script>
+{% endblock extra_js %}

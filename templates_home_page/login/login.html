@@ -1,0 +1,53 @@
+
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+</head>
+<body>
+    <div class="login-container">
+        {% load static %}
+        <img src="{% static 'Logo_Auth.png' %}" alt="Logo">
+        <form id="loginForm" action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Usuário" required>
+            <input type="password" name="password" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+        <div class="signup-message">
+            <p>Não tem uma conta? <a href="{% url 'autentica' %}">Faça seu cadastro aqui.</a></p>
+        </div>
+    </div>
+
+    <!-- Pop-up de carregamento -->
+    <div id="loadingPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
+        <p style="background-color:white;padding:20px;border-radius:5px;">Redirecionando...</p>
+    </div>
+
+    <!-- Pop-up de erro -->
+    <div id="errorPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
+        <div style="background-color:white;padding:20px;border-radius:5px;text-align:center;">
+            <p id="errorText" style="color:red;">Usuário ou senha inválidos, tente novamente</p>
+            <div style="color:red;font-size:30px;">&times;</div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock content %}
+
+{% block extra_js %}
+<script src="{% static 'js/login.js' %}"></script>
+{% endblock extra_js %}
+
+

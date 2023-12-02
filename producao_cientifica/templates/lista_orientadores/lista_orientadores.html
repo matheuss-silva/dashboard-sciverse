@@ -1,0 +1,47 @@
+{% extends "drawer/drawer.html" %}
+
+{% load static %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/lista_orientadores.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="main-container">
+        <h2 class="heading">Orientadores</h2>
+        <div id="search-container">
+            <input type="text" id="search" class="form-control" placeholder="Procurar orientador...">
+        </div>
+        <table id="orientadoresTable" class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome Orientador</th>
+                    <th>Cursos Orientados</th>
+                    <th>Quantidade de Orientações</th>
+                    <th>Perfil Institucional</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for orientador in orientadores %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ orientador.nome_orientador }}</td>
+                    <td>{{ orientador.cursos_orientados }}</td>
+                    <td>{{ orientador.quantidade_orientacoes }}</td>
+                    <td><a href="#" class="perfil-btn">Perfil Institucional</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block extra_js %}
+<script src="{% static 'js/lista_orientadores.js' %}"></script>
+{% endblock extra_js %}
